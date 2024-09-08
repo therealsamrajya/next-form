@@ -2,22 +2,14 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import DateSelector from './DateSelector';
 import GenderSelector from './GenderSelector';
-
-type FormData = {
-  firstName: string;
-  middleName?: string;
-  lastName: string;
-  phone: string;
-  birthDate: Date;
-  gender: 'male' | 'female' | 'other';
-};
+import { FormValues } from './types';
 
 type Props = {
   onNext: () => void;
 };
 
 const PersonalDetails: React.FC<Props> = ({ onNext }) => {
-  const { register, formState: { errors }, trigger, setValue } = useFormContext<FormData>();
+  const { register, formState: { errors }, trigger, setValue } = useFormContext<FormValues>();
 
   const handleNext = async () => {
     console.log('handleNext called in PersonalDetails');
@@ -85,7 +77,7 @@ const PersonalDetails: React.FC<Props> = ({ onNext }) => {
             register={register} 
             error={errors.birthDate} 
             label=""
-            setValue={(name, value) => setValue(name as keyof FormData, value)}
+            setValue={(name, value) => setValue(name as Extract<keyof FormValues, string>, value)}
           />
         </div>
       </div>

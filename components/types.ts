@@ -1,4 +1,9 @@
 export interface FormValues {
-    gender?: string;
+    firstName: string;
+    middleName?: string;
+    lastName: string;
+    phone: string;
+    birthDate: Date;
+    gender: 'male' | 'female' | 'other';
     [key: string]: unknown;
-  }
+}
