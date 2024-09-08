@@ -74,7 +74,7 @@ const PersonalDetails: React.FC<Props> = ({ onNext }) => {
             {...register('phone')} 
             placeholder='98xxxxxxxx' 
             id="phone" 
-            className="w-full px-4 py-2  dark:bg-white border-black border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300"
+            className="w-full max-sm:mb-[1rem] px-4 py-2  dark:bg-white border-black border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300"
           />
           {errors.phone && <span className="text-red-500 mt-1">{errors.phone.message}</span>}
         </div>
