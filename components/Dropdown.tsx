@@ -2,15 +2,12 @@
 import React from 'react';
 import { UseFormRegister, FieldError } from 'react-hook-form';
 
-type Option = {
-  value: string;
-  label: string;
-};
+type FormValues = Record<string, unknown>;
 
 type Props = {
   name: string;
-  options: Option[];
-  register: UseFormRegister<any>;
+  options: { value: string; label: string }[];
+  register: UseFormRegister<FormValues>;
   error?: FieldError;
   placeholder?: string;
   className?: string;

@@ -1,20 +1,19 @@
 import React from 'react';
 import { UseFormRegister, FieldError, Merge, FieldErrorsImpl } from 'react-hook-form';
 
+type FormValues = Record<string, unknown>;
+
 type Props = {
-  register: UseFormRegister<any>;
-  error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
+  register: UseFormRegister<FormValues>;
+  error?: FieldError | Merge<FieldError, FieldErrorsImpl<FormValues>>;
 };
 
 const GenderSelector: React.FC<Props> = ({ register, error }) => {
-  const getErrorMessage = (error: any): string => {
-    return typeof error === 'string' 
-      ? error 
-      : error?.message instanceof Error
-      ? error.message.toString()
-      : typeof error?.message === 'string'
-      ? error.message
-      : '';
+  const getErrorMessage = (error: FieldError | Merge<FieldError, FieldErrorsImpl<FormValues>> | undefined): string => {
+    if (typeof error === 'string') return error;
+    if (error?.message instanceof Error) return error.message.toString();
+    if (typeof error?.message === 'string') return error.message;
+    return '';
   };
 
   return (
