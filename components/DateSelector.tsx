@@ -1,16 +1,20 @@
 "use client";
-import { UseFormRegister, FieldError } from 'react-hook-form';
+import { UseFormRegister, FieldError, UseFormSetValue } from 'react-hook-form';
 import { parse, isValid } from 'date-fns';
+import Image from 'next/image';
 
-type Props = {
+type FormValues = Record<string, unknown>;
+
+type DateSelectorProps = {
+  register: UseFormRegister<FormValues>;
+  setValue: UseFormSetValue<FormValues>;
   name: string;
-  label: string;
-  register: UseFormRegister<any>;
   error?: FieldError;
-  setValue: (name: string, value: any) => void;
+  label: string;
+  // Add other props as needed
 };
 
-const DateSelector: React.FC<Props> = ({ name, label, register, setValue, error }) => {
+const DateSelector: React.FC<DateSelectorProps> = ({ register, setValue, name, error, label }) => {
   const formatDate = (date: Date): string => {
     const day = date.getDate().toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
