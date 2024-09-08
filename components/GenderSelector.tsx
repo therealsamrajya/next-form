@@ -1,19 +1,16 @@
 import React from 'react';
 import { UseFormRegister, FieldError, Merge, FieldErrorsImpl } from 'react-hook-form';
-
-interface FormValues {
-  [key: string]: unknown;
-}
+import { FormValues } from './types';
 
 type Props = {
   register: UseFormRegister<FormValues>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
+  error?: FieldError | Merge<FieldError, FieldErrorsImpl<FormValues>>;
 };
 
 const GenderSelector: React.FC<Props> = ({ register, error }) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const getErrorMessage = (err: FieldError | Merge<FieldError, FieldErrorsImpl<any>> | undefined): string => {
+  const getErrorMessage = (err: FieldError | Merge<FieldError, FieldErrorsImpl<FormValues>> | undefined): string => {
     if (typeof err === 'string') return err;
     if (err?.message instanceof Error) return err.message.toString();
     if (typeof err?.message === 'string') return err.message;

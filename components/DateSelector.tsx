@@ -2,11 +2,12 @@
 import { UseFormRegister, FieldError, UseFormSetValue } from 'react-hook-form';
 import { parse, isValid } from 'date-fns';
 import Image from 'next/image';
-
-type FormValues = Record<string, unknown>;
+import { FormValues } from './types';
 
 type DateSelectorProps = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<FormValues>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setValue: UseFormSetValue<FormValues>;
   name: string;
   error?: FieldError;
