@@ -1,15 +1,16 @@
 import React from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, UseFormRegister } from 'react-hook-form';
 import DateSelector from './DateSelector';
 import GenderSelector from './GenderSelector';
 import { FormValues } from './types';
 
 type Props = {
   onNext: () => void;
+  register: UseFormRegister<FormValues>;
 };
 
-const PersonalDetails: React.FC<Props> = ({ onNext }) => {
-  const { register, formState: { errors }, trigger, setValue } = useFormContext<FormValues>();
+const PersonalDetails: React.FC<Props> = ({ onNext, register }) => {
+  const { formState: { errors }, trigger, setValue } = useFormContext<FormValues>();
 
   const handleNext = async () => {
     console.log('handleNext called in PersonalDetails');
