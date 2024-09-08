@@ -1,0 +1,24 @@
+.radioInput {
+  display: none;
+}
+
+.radioInput:checked + label .radioCircle {
+  background-color: #10B981;
+  border-color: #10B981;
+}
+
+.radioCircle {
+  transition: all 0.2s ease-in-out;
+}
+
+.radioInput:checked + label .radioCircle::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
