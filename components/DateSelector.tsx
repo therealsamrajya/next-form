@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { UseFormRegister, FieldError, UseFormSetValue } from 'react-hook-form';
-import { parse, isValid, format } from 'date-fns';
+import { parse, isValid} from 'date-fns';
 
 import { FormValues } from './types';
 
