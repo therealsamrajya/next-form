@@ -7,10 +7,12 @@ interface FormValues {
 
 type Props = {
   register: UseFormRegister<FormValues>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
 };
 
 const GenderSelector: React.FC<Props> = ({ register, error }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getErrorMessage = (err: FieldError | Merge<FieldError, FieldErrorsImpl<any>> | undefined): string => {
     if (typeof err === 'string') return err;
     if (err?.message instanceof Error) return err.message.toString();
