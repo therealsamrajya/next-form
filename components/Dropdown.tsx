@@ -1,13 +1,16 @@
 "use client"
 import React from 'react';
 import { UseFormRegister, FieldError } from 'react-hook-form';
-import { FormValues } from './types';
+
+type Option = {
+  value: string;
+  label: string;
+};
 
 type Props = {
   name: string;
-  options: { value: string; label: string }[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  register: UseFormRegister<FormValues>;
+  options: Option[];
+  register: UseFormRegister<any>;
   error?: FieldError;
   placeholder?: string;
   className?: string;

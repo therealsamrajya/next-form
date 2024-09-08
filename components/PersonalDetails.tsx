@@ -1,16 +1,23 @@
 import React from 'react';
-import { useFormContext, UseFormRegister } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import DateSelector from './DateSelector';
 import GenderSelector from './GenderSelector';
-import { FormValues } from './types';
+
+type FormData = {
+  firstName: string;
+  middleName?: string;
+  lastName: string;
+  phone: string;
+  birthDate: Date;
+  gender: 'male' | 'female' | 'other';
+};
 
 type Props = {
   onNext: () => void;
-  register: UseFormRegister<FormValues>;
 };
 
-const PersonalDetails: React.FC<Props> = ({ onNext, register }) => {
-  const { formState: { errors }, trigger, setValue } = useFormContext<FormValues>();
+const PersonalDetails: React.FC<Props> = ({ onNext }) => {
+  const { register, formState: { errors }, trigger, setValue } = useFormContext<FormData>();
 
   const handleNext = async () => {
     console.log('handleNext called in PersonalDetails');
@@ -27,7 +34,7 @@ const PersonalDetails: React.FC<Props> = ({ onNext, register }) => {
     <div className="relative max-w-4xl mx-auto p-8 bg-white bg-opacity-90 rounded-lg shadow-lg border-2 border-black z-10 mb-[2rem] mt-[8rem] ">
       <div className="absolute inset-0 bg-white opacity-90 -z-10 rounded-lg"></div>
       <h2 className="text-3xl mb-8 text-center relative z-20">Personal Details</h2>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 ">
         <div className="relative z-20">
           <label htmlFor="firstName" className="block mb-2">First Name</label>
@@ -76,9 +83,9 @@ const PersonalDetails: React.FC<Props> = ({ onNext, register }) => {
           <DateSelector 
             name="birthDate" 
             register={register} 
-            error={errors.birthDate} 
             label=""
-            setValue={(name, value) => setValue(name as Extract<keyof FormValues, string>, value)}
+            error={errors.birthDate} 
+            setValue={(name, value) => setValue(name as 'birthDate', value as Date)}
           />
         </div>
       </div>
