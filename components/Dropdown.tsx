@@ -2,7 +2,9 @@
 import React from 'react';
 import { UseFormRegister, FieldError } from 'react-hook-form';
 
-type FormValues = Record<string, unknown>;
+interface FormValues {
+  [key: string]: unknown;
+}
 
 type Props = {
   name: string;
