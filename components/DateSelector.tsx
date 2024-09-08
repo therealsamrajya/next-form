@@ -1,7 +1,7 @@
 "use client";
 import { UseFormRegister, FieldError, UseFormSetValue } from 'react-hook-form';
 import { parse, isValid } from 'date-fns';
-import Image from 'next/image';
+
 import { FormValues } from './types';
 
 type DateSelectorProps = {
